@@ -5,7 +5,7 @@ const options = {
     method: 'GET',
     url: 'https://crypto-news16.p.rapidapi.com/news/top/100',
     headers: {
-      'X-RapidAPI-Key': '15d2ed8b8dmsh228b3214942db64p1d1632jsna1b82070aef7',
+      'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
       'X-RapidAPI-Host': 'crypto-news16.p.rapidapi.com'
     }
   };
