@@ -3,26 +3,37 @@ import { useDispatch, useSelector } from "react-redux";
 import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
+import { Spin } from 'antd';
+
 
 const CryptoCurrencies = ({ count }) => {
+    const [spinning, setSpinning] = React.useState(false);
     const dispatch = useDispatch();
     const cryptos = useSelector((state) => state.crypto.cryptos);
     const loading = useSelector((state) => state.crypto.loading);
-    const error = useSelector((state) => state.crypto.error);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredData, setFilteredData] = useState([]);
 
-
     useEffect(() => {
-        const filteredResults = cryptos.filter((crypto) =>
-            crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredData(filteredResults)
-    }, [searchTerm, cryptos]);
+        setSpinning(true);
+    
+        try {
+            const filteredResults = cryptos.filter((crypto) =>
+                crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+    
+            setFilteredData(filteredResults);
+        } catch (error) {
+            console.error("Error filtering crypto info:", error);
+        } finally {
+            setSpinning(false);
+        }
+    }, [dispatch, searchTerm, cryptos]);
 
-    console.log(cryptos);
     return (
         <>
+            <Spin spinning={loading} fullscreen />
+
             {!count &&
                 <div className="search-crypto">
                     <Input placeholder="Search Cryptocurrency" onChange={(e) => setSearchTerm(e.target.value)} />

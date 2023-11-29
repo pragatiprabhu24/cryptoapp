@@ -35,11 +35,11 @@ const Homepage = () => {
 
             <Title level={3} className="heading">Global Crypto Stats</Title>
             <Row>
-                <Col span={4}><Statistic title="Total Cryptocurrencies" value={cryptoinfo.total} /></Col>
-                <Col span={4}><Statistic title="Total Exchanges" value={millify(cryptoinfo.totalExchanges)} /></Col>
-                <Col span={4}><Statistic title="Total Market Cap" value={millify(cryptoinfo.totalMarketCap)} /></Col>
-                <Col span={4}><Statistic title="Total 24h Volume" value={millify(cryptoinfo.total24hVolume)} /></Col>
-                <Col span={4}><Statistic title="Total Markets" value={millify(cryptoinfo.totalMarkets)} /></Col>
+                <Col span={12}><Statistic title="Total Cryptocurrencies" value={cryptoinfo.total} /></Col>
+                <Col span={12}><Statistic title="Total Exchanges" value={millify(cryptoinfo.totalExchanges)} /></Col>
+                <Col span={12}><Statistic title="Total Market Cap" value={millify(cryptoinfo.totalMarketCap)} /></Col>
+                <Col span={12}><Statistic title="Total 24h Volume" value={millify(cryptoinfo.total24hVolume)} /></Col>
+                <Col span={12}><Statistic title="Total Markets" value={millify(cryptoinfo.totalMarkets)} /></Col>
             </Row>
             <div className="home-heading-container">
                 <Title level={3} className="home-title">Top 10 Cryptocurrencies in the world</Title>

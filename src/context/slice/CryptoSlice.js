@@ -45,9 +45,6 @@ const CryptoSlice = createSlice({
             message: "",
         },
     },
-    reducers: {
-        // You can add specific reducers if needed
-    },
     extraReducers: {
         [getCryptoInfo.pending]: (state, action) => {
             state.loading = true;

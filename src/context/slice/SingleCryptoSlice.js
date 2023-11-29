@@ -5,15 +5,15 @@ const options = {
     method: 'GET',
     url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd',
     params: {
-      referenceCurrencyUuid: 'yhjMzLPhuIDl',
-      timePeriod: '24h'
+        referenceCurrencyUuid: 'yhjMzLPhuIDl',
+        timePeriod: '24h'
     },
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
-      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+        'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
+        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
     }
-  };
-  export const getSingleCryptoInfo = createAsyncThunk(
+};
+export const getSingleCryptoInfo = createAsyncThunk(
     "getSingleCryptoInfo",
     async (uuid) => {
         try {
@@ -43,9 +43,7 @@ const SingleCryptoSlice = createSlice({
             message: "",
         },
     },
-    reducers: {
-        // You can add specific reducers if needed
-    },
+
     extraReducers: {
         [getSingleCryptoInfo.pending]: (state, action) => {
             state.loading = true;

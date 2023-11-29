@@ -5,18 +5,18 @@ const options = {
     method: 'GET',
     url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history',
     params: {
-      referenceCurrencyUuid: 'yhjMzLPhuIDl',
-      timePeriod: '24h'
+        referenceCurrencyUuid: 'yhjMzLPhuIDl',
+        timePeriod: '24h'
     },
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
-      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+        'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
+        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
     }
-  };
-  
-  export const getCryptoHistory = createAsyncThunk(
+};
+
+export const getCryptoHistory = createAsyncThunk(
     "getCryptoHistory",
-    async (uuid) => {
+    async ({ uuid }) => {
         try {
             const dynamicOptions = {
                 ...options,
@@ -43,9 +43,6 @@ const CryptoHistorySlice = createSlice({
             type: "",
             message: "",
         },
-    },
-    reducers: {
-        // You can add specific reducers if needed
     },
     extraReducers: {
         [getCryptoHistory.pending]: (state, action) => {

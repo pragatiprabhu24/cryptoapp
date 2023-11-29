@@ -4,25 +4,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment/moment";
 import { getCryptoNews } from "../context/slice/NewsSlice";
+import { Spin } from 'antd';
+
+
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-const demoImage = "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News"
+const demoImage = `https://picsum.photos/800/400?random=${Math.floor(Math.random() * 1000)}`;
 
 const News = ({ count }) => {
-
+    const [spinning, setSpinning] = React.useState(false);
     const dispatch = useDispatch();
     const news = useSelector((state) => state.news.news);
-    const loading = useSelector((state) => state.news.loading);
-    const error = useSelector((state) => state.news.error);
-    const cryptos = useSelector((state) => state.crypto.cryptos);
+
 
     useEffect(() => {
-        dispatch(getCryptoNews());
-    }, []);
-    console.log(news);
+        setSpinning(true);
+
+        dispatch(getCryptoNews())
+            .then(() => {
+                setSpinning(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching crypto info:", error);
+                setSpinning(false);
+            });
+    }, [dispatch]);
+
+
     return (
         <>
+            <Spin spinning={spinning} fullscreen />
+
             <Row gutter={[24, 24]}>
                 {news.slice(0, count).map((news, i) => (
                     <Col xs={24} sm={12} lg={8} key={i}>
@@ -37,7 +50,7 @@ const News = ({ count }) => {
                                 <p>
                                     {
                                         news.description > 100 ? `${news.description.substring(0, 100)}...`
-                                            : news.description
+                                            : news.description || "Description Not available"
                                     }
                                 </p>
                                 <div className="provider-container">

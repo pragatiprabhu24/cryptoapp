@@ -6,8 +6,8 @@ import CryptoHistorySlice from "./slice/CryptoHistorySlice";
 import ExchangeSlice from "./slice/ExchangeSlice";
 
 export default configureStore({
-    reducer:{
-        crypto:CryptoSlice,
+    reducer: {
+        crypto: CryptoSlice,
         news: NewsSlice,
         singlecrypto: SingleCryptoSlice,
         history: CryptoHistorySlice,

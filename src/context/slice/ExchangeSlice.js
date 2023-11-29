@@ -5,17 +5,17 @@ const options = {
     method: 'GET',
     url: 'https://coinranking1.p.rapidapi.com/exchange/-zdvbieRdZ/coins',
     params: {
-      referenceCurrencyUuid: 'yhjMzLPhuIDl',
-      limit: '50',
-      offset: '0',
-      orderBy: '24hVolume',
-      orderDirection: 'desc'
+        referenceCurrencyUuid: 'yhjMzLPhuIDl',
+        limit: '50',
+        offset: '0',
+        orderBy: '24hVolume',
+        orderDirection: 'desc'
     },
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
-      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+        'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
+        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
     }
-  };
+};
 
 export const getExchanges = createAsyncThunk(
     "getExchanges",
@@ -42,9 +42,7 @@ const ExchangesSlice = createSlice({
             message: "",
         },
     },
-    reducers: {
-        // You can add specific reducers if needed
-    },
+
     extraReducers: {
         [getExchanges.pending]: (state, action) => {
             state.loading = true;

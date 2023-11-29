@@ -5,10 +5,10 @@ const options = {
     method: 'GET',
     url: 'https://crypto-news16.p.rapidapi.com/news/top/100',
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
-      'X-RapidAPI-Host': 'crypto-news16.p.rapidapi.com'
+        'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_KEY,
+        'X-RapidAPI-Host': 'crypto-news16.p.rapidapi.com'
     }
-  };
+};
 
 export const getCryptoNews = createAsyncThunk(
     "getCryptoNews",
@@ -35,9 +35,7 @@ const NewsSlice = createSlice({
             message: "",
         },
     },
-    reducers: {
-        // You can add specific reducers if needed
-    },
+
     extraReducers: {
         [getCryptoNews.pending]: (state, action) => {
             state.loading = true;
